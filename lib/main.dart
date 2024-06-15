@@ -1,5 +1,5 @@
-import 'package:duofinance/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:duofinance/routes/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +10,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
+      routerConfig: Routes(context).router,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primaryColor: Colors.cyan[400],
+        scaffoldBackgroundColor: Colors.grey[900],
+        brightness: Brightness.dark,
         useMaterial3: true,
       ),
-      home: const HomePage(),
     );
   }
 }

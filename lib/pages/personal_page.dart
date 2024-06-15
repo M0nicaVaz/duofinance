@@ -1,3 +1,4 @@
+import 'package:duofinance/widgets/template.dart';
 import 'package:flutter/material.dart';
 
 class PersonalPage extends StatelessWidget {
