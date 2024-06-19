@@ -1,6 +1,6 @@
-import 'package:duofinance/pages/dashboard_page.dart';
-import 'package:duofinance/pages/personal_page.dart';
-import 'package:duofinance/pages/settings_page.dart';
+import 'package:duofinance/features/dashboard/dashboard_page.dart';
+import 'package:duofinance/features/statistics/personal_page.dart';
+import 'package:duofinance/features/settings/settings_page.dart';
 import 'package:go_router/go_router.dart';
 
 final List<GoRoute> privateRoutes = <GoRoute>[

@@ -1,4 +1,4 @@
-import 'package:duofinance/pages/sign_in_page.dart';
+import 'package:duofinance/features/auth/sign_in_page.dart';
 import 'package:go_router/go_router.dart';
 
 final List<GoRoute> publicRoutes = <GoRoute>[
