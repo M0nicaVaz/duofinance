@@ -35,6 +35,10 @@ class _TemplateState extends State<Template> {
         currentPageIndex: currentPageIndex,
         onDestinationSelected: handleDestination,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
       body: SafeArea(child: widget.child),
     );
   }

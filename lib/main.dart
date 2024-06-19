@@ -14,11 +14,13 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       routerConfig: Routes(context).router,
       theme: ThemeData(
-        primaryColor: Colors.cyan[400],
-        scaffoldBackgroundColor: Colors.grey[900],
-        brightness: Brightness.dark,
-        useMaterial3: true,
-      ),
+          scaffoldBackgroundColor: Colors.grey[900],
+          brightness: Brightness.dark,
+          useMaterial3: true,
+          colorScheme: ColorScheme.dark(
+            primary: Colors.cyan[400]!,
+            secondary: Colors.lime[200]!,
+          )),
     );
   }
 }
