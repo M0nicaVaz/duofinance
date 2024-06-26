@@ -1,4 +1,4 @@
-import 'package:duofinance/features/dashboard/widgets/chart.dart';
+import 'package:duofinance/features/dashboard/widgets/spending_list.dart';
 import 'package:duofinance/features/dashboard/widgets/incomings.dart';
 import 'package:duofinance/features/dashboard/widgets/total.dart';
 import 'package:flutter/material.dart';
@@ -37,8 +37,8 @@ class DashboardPage extends StatelessWidget {
             ),
             const SizedBox(height: 8.0),
             const Expanded(
-              flex: 3,
-              child: Chart(),
+              flex: 4,
+              child: SpendingList(),
             ),
           ],
         ));
