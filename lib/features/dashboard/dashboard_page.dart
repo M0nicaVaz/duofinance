@@ -20,7 +20,6 @@ class DashboardPage extends StatelessWidget {
               flex: 1,
               child: Total(theme: theme),
             ),
-            const SizedBox(height: 16.0),
             Text(
               'Nosso dinheiro:',
               style: theme.textTheme.titleLarge,

@@ -11,35 +11,17 @@ class Total extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: <Widget>[
         Text(
           'Total de gastos do mês',
           style: theme.textTheme.titleMedium,
         ),
-        Center(
-          child: RichText(
-            text: TextSpan(
-              text: 'R\$ ',
-              style: TextStyle(
-                color: Colors.cyan[600],
-                fontSize: 38.0,
-              ),
-              children: <TextSpan>[
-                TextSpan(
-                  text: '3809',
-                  style: TextStyle(
-                    color: Colors.cyan[400],
-                    fontSize: 38.0,
-                  ),
-                ),
-                TextSpan(
-                  text: ',32',
-                  style: TextStyle(
-                    color: Colors.cyan[600],
-                    fontSize: 38.0,
-                  ),
-                ),
-              ],
+        const Center(
+          child: Text(
+            'R\$ 3809,32',
+            style: TextStyle(
+              color: Colors.cyanAccent,
+              fontSize: 34.0,
             ),
           ),
         ),

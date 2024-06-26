@@ -44,8 +44,14 @@ class _SpendingListState extends State<SpendingList> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.grey[850],
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(8.0),
+        ),
+        color: Colors.grey[850]!,
+      ),
+      clipBehavior: Clip.hardEdge,
       child: ReorderableListView.builder(
         itemCount: spendings.length,
         onReorder: (int oldIndex, int newIndex) {
@@ -66,8 +72,8 @@ class _SpendingListState extends State<SpendingList> {
                   onPressed: (BuildContext ctx) => handleRemoveItem(index),
                   icon: Icons.delete_rounded,
                   borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(16.0),
-                      bottomRight: Radius.circular(16.0)),
+                      topRight: Radius.circular(8.0),
+                      bottomRight: Radius.circular(8.0)),
                   backgroundColor: Colors.red[300]!,
                 ),
               ],
@@ -82,7 +88,7 @@ class _SpendingListState extends State<SpendingList> {
 
 Widget listItem({required Spending item}) => ListTile(
       leading: Icon(
-        Icons.drag_handle_rounded,
+        Icons.drag_indicator_rounded,
         size: 20,
         color: Colors.grey[600]!,
       ),

@@ -36,6 +36,7 @@ class _TemplateState extends State<Template> {
         onDestinationSelected: handleDestination,
       ),
       floatingActionButton: FloatingActionButton(
+        shape: const CircleBorder(),
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
