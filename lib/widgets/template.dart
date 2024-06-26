@@ -1,6 +1,8 @@
 import 'package:duofinance/routes/private_routes.dart';
 import 'package:duofinance/widgets/bottom_nav_bar.dart';
+import 'package:duofinance/widgets/dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class Template extends StatefulWidget {
@@ -37,8 +39,16 @@ class _TemplateState extends State<Template> {
       ),
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
-        onPressed: () {},
         child: const Icon(Icons.add),
+        onPressed: () async {
+          showModalBottomSheet<void>(
+            context: context,
+            useSafeArea: true,
+            builder: (BuildContext context) {
+              return Center(child: showAddDialog(context, GlobalKey()));
+            },
+          );
+        },
       ),
       body: SafeArea(child: widget.child),
     );

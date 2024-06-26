@@ -122,7 +122,7 @@ Widget listItem({required Spending item}) => ListTile(
               style: TextStyle(
                   color: item.spent <= item.expected
                       ? Colors.greenAccent
-                      : Colors.red[400]!,
+                      : Colors.redAccent,
                   fontSize: 12.0,
                   fontWeight: FontWeight.bold),
             ),
