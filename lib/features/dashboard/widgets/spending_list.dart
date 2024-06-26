@@ -13,10 +13,11 @@ class SpendingList extends StatefulWidget {
 
 class _SpendingListState extends State<SpendingList> {
   final List<Spending> spendings = <Spending>[
-    Spending(id: 1, title: "Netflix", expected: 55, spent: 55),
+    Spending(id: 1, title: "Energia", expected: 200, spent: 158),
+    Spending(id: 5, title: "Netflix", expected: 55, spent: 55),
     Spending(id: 2, title: "Aluguel", expected: 2000, spent: 2000),
-    Spending(id: 3, title: "Amazon Prime", expected: 20, spent: 10),
     Spending(id: 4, title: "Mercado", expected: 600, spent: 824),
+    Spending(id: 3, title: "Amazon Prime", expected: 20, spent: 10),
   ];
 
   handleReorder(int oldIndex, int newIndex) {
@@ -53,6 +54,24 @@ class _SpendingListState extends State<SpendingList> {
       ),
       clipBehavior: Clip.hardEdge,
       child: ReorderableListView.builder(
+        proxyDecorator: (Widget child, int index, Animation<double> animation) {
+          return Material(
+            shape: const ContinuousRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(8.0),
+              ),
+            ),
+            color: Colors.cyanAccent.withOpacity(0.2),
+            child: ScaleTransition(
+              scale: animation.drive(
+                Tween<double>(begin: 1, end: 1.05).chain(
+                  CurveTween(curve: Curves.bounceInOut),
+                ),
+              ),
+              child: child,
+            ),
+          );
+        },
         itemCount: spendings.length,
         onReorder: (int oldIndex, int newIndex) {
           handleReorder(oldIndex, newIndex);
