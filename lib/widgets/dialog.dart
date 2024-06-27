@@ -7,7 +7,8 @@ showAddDialog(BuildContext context, GlobalKey key) {
     color: Colors.grey[900],
     child: Wrap(
       alignment: WrapAlignment.center,
-      runAlignment: WrapAlignment.spaceEvenly,
+      runAlignment: WrapAlignment.start,
+      runSpacing: 24.0,
       children: <Widget>[
         Text("Adicionar gasto", style: Theme.of(context).textTheme.titleLarge),
         Form(
@@ -19,6 +20,7 @@ showAddDialog(BuildContext context, GlobalKey key) {
                 controller: TextEditingController(),
                 decoration: const InputDecoration(
                   labelText: 'Gastei com',
+                  hintText: 'Ex: Aluguel, mercado, etc.',
                 ),
               ),
               const SizedBox(height: 8.0),
@@ -26,6 +28,7 @@ showAddDialog(BuildContext context, GlobalKey key) {
                 controller: TextEditingController(),
                 decoration: const InputDecoration(
                   labelText: 'Valor previsto',
+                  prefix: Text('R\$'),
                 ),
               ),
               const SizedBox(height: 8.0),
@@ -33,6 +36,7 @@ showAddDialog(BuildContext context, GlobalKey key) {
                 controller: TextEditingController(),
                 decoration: const InputDecoration(
                   labelText: 'Valor gasto',
+                  prefix: Text('R\$'),
                 ),
               ),
             ],
@@ -40,7 +44,7 @@ showAddDialog(BuildContext context, GlobalKey key) {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <TextButton>[
             TextButton(
               child: const Text(
                 'Cancelar',
