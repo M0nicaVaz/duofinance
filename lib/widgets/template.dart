@@ -42,6 +42,7 @@ class _TemplateState extends State<Template> {
         child: const Icon(Icons.add),
         onPressed: () async {
           showModalBottomSheet<void>(
+            isScrollControlled: true,
             context: context,
             useSafeArea: true,
             builder: (BuildContext context) {
