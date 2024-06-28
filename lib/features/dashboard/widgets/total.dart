@@ -1,3 +1,4 @@
+import 'package:duofinance/utils/format_value.dart';
 import 'package:flutter/material.dart';
 
 class Total extends StatelessWidget {
@@ -16,10 +17,10 @@ class Total extends StatelessWidget {
           'Total de gastos do mês',
           style: theme.textTheme.titleMedium,
         ),
-        const Center(
+        Center(
           child: Text(
-            'R\$ 3809,32',
-            style: TextStyle(
+            formatValue(4032.57),
+            style: const TextStyle(
               color: Colors.cyanAccent,
               fontSize: 34.0,
             ),

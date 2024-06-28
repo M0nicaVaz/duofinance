@@ -1,6 +1,7 @@
 import 'package:duofinance/utils/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 class AddForm extends StatefulWidget {
   final String? title;
@@ -33,7 +34,8 @@ class _AddFormState extends State<AddForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
       padding: const EdgeInsets.all(24.0),
       height: MediaQuery.sizeOf(context).height,
       color: Colors.grey[900],
@@ -42,7 +44,12 @@ class _AddFormState extends State<AddForm> {
         runAlignment: WrapAlignment.start,
         runSpacing: 24.0,
         children: <Widget>[
-          Text("Novo gasto", style: Theme.of(context).textTheme.titleLarge),
+          Text(
+            widget.title != null
+                ? "Editando: ${widget.title}"
+                : "Adicionar gasto",
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
           Form(
             key: _form,
             child: Column(
@@ -69,13 +76,10 @@ class _AddFormState extends State<AddForm> {
                   TextFormField(
                     initialValue: widget.expectedValue,
                     onSaved: (String? value) => spendingExpected = value,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly
-                    ],
+                    validator: Validator.validateNumber,
                     keyboardType: const TextInputType.numberWithOptions(
                       decimal: true,
                     ),
-                    validator: Validator.validateNumber,
                     decoration: const InputDecoration(
                       labelText: 'Valor previsto',
                       prefix: Text('R\$ '),
@@ -85,9 +89,6 @@ class _AddFormState extends State<AddForm> {
                 TextFormField(
                   initialValue: widget.spentValue,
                   onSaved: (String? value) => spendingSpent = value,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly
-                  ],
                   keyboardType: const TextInputType.numberWithOptions(
                     decimal: true,
                   ),
@@ -116,7 +117,7 @@ class _AddFormState extends State<AddForm> {
               TextButton(
                 child: const Text(
                   'Cancelar',
-                  style: TextStyle(color: Colors.redAccent),
+                  style: TextStyle(color: Colors.redAccent, fontSize: 16),
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               ),
@@ -124,7 +125,7 @@ class _AddFormState extends State<AddForm> {
                 onPressed: handleSave,
                 child: const Text(
                   'Salvar',
-                  style: TextStyle(color: Colors.greenAccent),
+                  style: TextStyle(color: Colors.greenAccent, fontSize: 16),
                 ),
               ),
             ],

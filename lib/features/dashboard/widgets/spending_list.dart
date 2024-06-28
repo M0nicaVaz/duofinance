@@ -1,4 +1,5 @@
 import 'package:duofinance/core/entities/spending_entity.dart';
+import 'package:duofinance/features/dashboard/widgets/spending_item.dart';
 import 'package:duofinance/widgets/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -103,68 +104,10 @@ class _SpendingListState extends State<SpendingList> {
                 ),
               ],
             ),
-            child: listItem(item: spendings[index]),
+            child: ListItem(item: spendings[index]),
           );
         },
       ),
     );
   }
 }
-
-Widget listItem({required Spending item}) => ListTile(
-      leading: Icon(
-        Icons.drag_indicator_rounded,
-        size: 20,
-        color: Colors.grey[600]!,
-      ),
-      horizontalTitleGap: 4,
-      title: Text(item.title),
-      subtitle: RichText(
-        text: TextSpan(
-          children: <TextSpan>[
-            if (item.spent != item.expected) ...expectedValues(item),
-            TextSpan(
-              text: 'R\$ ${item.spent.toStringAsFixed(2)}',
-              style: TextStyle(
-                  color: item.spent <= item.expected
-                      ? Colors.greenAccent
-                      : Colors.redAccent,
-                  fontSize: 12.0,
-                  fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
-    );
-
-List<TextSpan> expectedValues(Spending item) => <TextSpan>[
-      TextSpan(
-        text: 'Previsto: ',
-        style: TextStyle(
-          color: Colors.grey[200],
-          fontSize: 12.0,
-        ),
-      ),
-      TextSpan(
-        text: 'R\$ ${item.expected.toStringAsFixed(2)}',
-        style: TextStyle(
-          color: Colors.cyan[100]!,
-          fontSize: 12.0,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      TextSpan(
-        text: '  |  ',
-        style: TextStyle(
-          color: Colors.grey[600]!,
-          fontSize: 12.0,
-        ),
-      ),
-      TextSpan(
-        text: 'Gasto: ',
-        style: TextStyle(
-          color: Colors.grey[200],
-          fontSize: 12.0,
-        ),
-      ),
-    ];

@@ -1,4 +1,5 @@
 import 'package:duofinance/core/entities/budget.dart';
+import 'package:duofinance/utils/format_value.dart';
 import 'package:flutter/material.dart';
 
 final List<Budget> budgets = <Budget>[
@@ -52,23 +53,16 @@ class Incomings extends StatelessWidget {
                     ),
                     cardLine(
                       label: "Renda total",
-                      content:
-                          'R\$ ${budgets[index].incoming.toStringAsFixed(2)}',
+                      content: formatValue(budgets[index].incoming),
                     ),
                     cardLine(
-                      label: "Proporção",
-                      content: '${budgets[index].percentage}%',
-                    ),
-                    cardLine(
+                      percent: budgets[index].percentage,
                       label: "Contribuição",
-                      content:
-                          'R\$ ${budgets[index].contribution.toStringAsFixed(2)}',
+                      content: formatValue(budgets[index].contribution),
                     ),
                     cardLine(
-                      label: "Restante",
-                      content:
-                          'R\$ ${budgets[index].remaining.toStringAsFixed(2)}',
-                    ),
+                        label: "Restante",
+                        content: formatValue(budgets[index].remaining)),
                   ],
                 ),
               ),
@@ -78,7 +72,12 @@ class Incomings extends StatelessWidget {
   }
 }
 
-RichText cardLine({required String label, required String content}) => RichText(
+RichText cardLine({
+  required String label,
+  required String content,
+  double? percent,
+}) =>
+    RichText(
       text: TextSpan(children: <TextSpan>[
         TextSpan(
           text: '$label: ',
@@ -87,11 +86,33 @@ RichText cardLine({required String label, required String content}) => RichText(
             fontSize: 14.0,
           ),
         ),
-        TextSpan(
-            text: content,
-            style: TextStyle(
-                color: Colors.cyanAccent[100],
-                fontSize: 14.0,
-                fontWeight: FontWeight.w600)),
+        if (percent != null)
+          TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                text: '$content ',
+                style: TextStyle(
+                  color: Colors.cyanAccent[100],
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              TextSpan(
+                text: '$percent%',
+                style: TextStyle(
+                  color: Colors.grey[500],
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        if (percent == null)
+          TextSpan(
+              text: content,
+              style: TextStyle(
+                  color: Colors.cyanAccent[100],
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600)),
       ]),
     );

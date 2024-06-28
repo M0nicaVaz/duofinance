@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Validator {
   static String? validateEmail(String? value) {
     const String pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
@@ -43,7 +45,9 @@ class Validator {
   }
 
   static String? validateNumber(String? value) {
-    if (value != null && num.tryParse(value) == null) {
+    final String? number = value?.replaceAll(",", ".");
+
+    if (number != null && num.tryParse(number) == null) {
       return 'Digite um número válido';
     }
     return null;
