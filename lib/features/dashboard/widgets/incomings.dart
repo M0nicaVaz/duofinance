@@ -36,7 +36,7 @@ class Incomings extends StatelessWidget {
               shape: ContinuousRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              color: Colors.grey[800],
+              color: Colors.grey[850],
               child: Padding(
                 padding: const EdgeInsets.only(
                     top: 12, bottom: 12, left: 18, right: 32.0),

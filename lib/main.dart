@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:duofinance/routes/routes.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  initializeDateFormatting('pt_BR', "").then(
+    (_) => runApp(const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Split',
       routerConfig: Routes(context).router,
       theme: ThemeData(
           scaffoldBackgroundColor: Colors.grey[900],

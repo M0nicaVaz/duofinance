@@ -1,7 +1,7 @@
 import 'package:duofinance/utils/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
+import 'package:month_picker_dialog/month_picker_dialog.dart';
 
 class AddForm extends StatefulWidget {
   final String? title;
@@ -21,6 +21,8 @@ class AddForm extends StatefulWidget {
 
 class _AddFormState extends State<AddForm> {
   final GlobalKey<FormState> _form = GlobalKey<FormState>();
+  final Locale ptBr = const Locale('fr', 'CA');
+  DateTime? selectedDate = DateTime.now();
   bool _hasUniqueValue = false;
   String? spendingTitle;
   String? spendingExpected;
@@ -34,8 +36,7 @@ class _AddFormState extends State<AddForm> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
+    return Container(
       padding: const EdgeInsets.all(24.0),
       height: MediaQuery.sizeOf(context).height,
       color: Colors.grey[900],
@@ -55,6 +56,40 @@ class _AddFormState extends State<AddForm> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey[850],
+                  ),
+                  iconAlignment: IconAlignment.start,
+                  child:
+                      Text('Mês: ${selectedDate!.month}/${selectedDate!.year}'),
+                  onPressed: () async {
+                    showMonthPicker(
+                      selectedMonthBackgroundColor: Colors.cyan[100],
+                      confirmWidget: const Text(
+                        "Confirmar",
+                        style: TextStyle(
+                          color: Colors.greenAccent,
+                        ),
+                      ),
+                      cancelWidget: const Text(
+                        "Cancelar",
+                        style: TextStyle(
+                          color: Colors.redAccent,
+                        ),
+                      ),
+                      locale: const Locale("pt", "BR"),
+                      context: context,
+                      initialDate: DateTime.now(),
+                    ).then((DateTime? date) {
+                      if (date != null) {
+                        setState(() {
+                          selectedDate = date;
+                        });
+                      }
+                    });
+                  },
+                ),
                 TextFormField(
                   initialValue: widget.title,
                   onSaved: (String? value) => spendingTitle = value,
