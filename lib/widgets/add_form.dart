@@ -134,6 +134,5 @@ class _AddFormState extends State<AddForm> {
         ],
       ),
     );
-    ;
   }
 }
