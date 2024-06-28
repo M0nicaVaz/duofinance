@@ -28,7 +28,6 @@ class _AddFormState extends State<AddForm> {
   handleSave() {
     if (_form.currentState!.validate()) {
       _form.currentState!.save();
-      debugPrint('Unique: $_hasUniqueValue');
     }
   }
 
@@ -93,7 +92,6 @@ class _AddFormState extends State<AddForm> {
                     decimal: true,
                   ),
                   validator: Validator.validateNumber,
-                  controller: TextEditingController(),
                   decoration: const InputDecoration(
                     labelText: 'Valor gasto',
                     prefix: Text('R\$ '),

@@ -39,14 +39,7 @@ class _TemplateState extends State<Template> {
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
         child: const Icon(Icons.add),
-        onPressed: () async {
-          showModalBottomSheet<void>(
-            isScrollControlled: true,
-            context: context,
-            useSafeArea: true,
-            builder: (BuildContext context) => showAddDialog(),
-          );
-        },
+        onPressed: () => showAddDialog(context: context),
       ),
       body: SafeArea(child: widget.child),
     );

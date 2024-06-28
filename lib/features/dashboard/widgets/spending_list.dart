@@ -1,4 +1,5 @@
 import 'package:duofinance/core/entities/spending_entity.dart';
+import 'package:duofinance/widgets/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -37,8 +38,13 @@ class _SpendingListState extends State<SpendingList> {
     // });
   }
 
-  handleEditItem(int index) {
-    debugPrint('Edit item $index');
+  handleEditItem(BuildContext context, int index) {
+    showAddDialog(
+      context: context,
+      title: spendings[index].title,
+      expectedValue: spendings[index].expected.toString(),
+      spentValue: spendings[index].spent.toString(),
+    );
   }
 
   void doNothing(BuildContext context) {}
@@ -83,7 +89,7 @@ class _SpendingListState extends State<SpendingList> {
               motion: const DrawerMotion(),
               children: <SlidableAction>[
                 SlidableAction(
-                  onPressed: (BuildContext ctx) => handleEditItem(index),
+                  onPressed: (BuildContext ctx) => handleEditItem(ctx, index),
                   icon: Icons.edit_rounded,
                   backgroundColor: Colors.cyan[200]!,
                 ),
