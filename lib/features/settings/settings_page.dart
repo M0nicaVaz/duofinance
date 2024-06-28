@@ -5,12 +5,9 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-
-    return Text(
-      'Hello',
-      style: theme.textTheme.bodyLarge!
-          .copyWith(color: theme.colorScheme.onPrimary),
+    return Container(
+      key: const Key("Account"),
+      child: const Text("Em breve"),
     );
   }
 }
