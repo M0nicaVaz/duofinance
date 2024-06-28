@@ -2,7 +2,6 @@ import 'package:duofinance/routes/private_routes.dart';
 import 'package:duofinance/widgets/bottom_nav_bar.dart';
 import 'package:duofinance/widgets/dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class Template extends StatefulWidget {
@@ -45,9 +44,7 @@ class _TemplateState extends State<Template> {
             isScrollControlled: true,
             context: context,
             useSafeArea: true,
-            builder: (BuildContext context) {
-              return Center(child: showAddDialog(context, GlobalKey()));
-            },
+            builder: (BuildContext context) => showAddDialog(),
           );
         },
       ),
