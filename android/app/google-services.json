@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "697623816853",
+    "project_id": "duofinance",
+    "storage_bucket": "duofinance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697623816853:android:a9c2ba11578cc737b2899c",
+        "android_client_info": {
+          "package_name": "duofinance.split"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgRovqy8dNuzqyUHGWTWggmrzwUzl7J3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
