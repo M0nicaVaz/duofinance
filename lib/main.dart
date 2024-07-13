@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:duofinance/routes/routes.dart';
+import 'package:duofinance/config/routes/routes.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:duofinance/firebase_options.dart';

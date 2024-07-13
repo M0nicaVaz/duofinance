@@ -1,14 +1,34 @@
+import 'package:duofinance/config/routes/go_extension.dart';
+import 'package:duofinance/config/routes/private_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class BottomNavBar extends StatelessWidget {
-  final void Function(int) onDestinationSelected;
-  final int currentPageIndex;
-
+class BottomNavBar extends StatefulWidget {
   const BottomNavBar({
-    required this.onDestinationSelected,
-    required this.currentPageIndex,
+    required this.path,
     super.key,
   });
+
+  final String? path;
+
+  @override
+  State<BottomNavBar> createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  int currentPageIndex = 0;
+
+  // getActiveButton({required BuildContext context, required int index}) {
+  //   return widget.path == destinations[index].path;
+  // }
+
+  handleDestination(int index) {
+    setState(() {
+      currentPageIndex = index;
+    });
+
+    context.goPush(privateRoutes[index].path);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +40,7 @@ class BottomNavBar extends StatelessWidget {
         ),
       ),
       backgroundColor: Colors.grey[900],
-      onDestinationSelected: onDestinationSelected,
+      onDestinationSelected: handleDestination,
       indicatorColor: Colors.grey[850],
       selectedIndex: currentPageIndex,
       destinations: const <Widget>[

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Validator {
   static String? validateEmail(String? value) {
     const String pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
