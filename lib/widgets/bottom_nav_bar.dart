@@ -1,7 +1,6 @@
 import 'package:duofinance/config/routes/go_extension.dart';
 import 'package:duofinance/config/routes/private_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({
@@ -17,10 +16,6 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentPageIndex = 0;
-
-  // getActiveButton({required BuildContext context, required int index}) {
-  //   return widget.path == destinations[index].path;
-  // }
 
   handleDestination(int index) {
     setState(() {
