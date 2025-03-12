@@ -60,7 +60,6 @@ class _AddFormState extends State<AddForm> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey[850],
                   ),
-                  iconAlignment: IconAlignment.start,
                   child:
                       Text('Mês: ${selectedDate!.month}/${selectedDate!.year}'),
                   onPressed: () async {
