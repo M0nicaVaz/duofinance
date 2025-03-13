@@ -14,7 +14,7 @@ class SpendingList extends StatefulWidget {
 }
 
 class _SpendingListState extends State<SpendingList> {
-  final List<Spending> spendings = <Spending>[
+  List<Spending> spendings = <Spending>[
     Spending(id: 1, title: "Energia", expected: 200, spent: 158),
     Spending(id: 5, title: "Netflix", expected: 55, spent: 55),
     Spending(id: 2, title: "Aluguel", expected: 2000, spent: 2000),
@@ -23,13 +23,12 @@ class _SpendingListState extends State<SpendingList> {
   ];
 
   handleReorder(int oldIndex, int newIndex) {
-    setState(() {
-      if (oldIndex < newIndex) {
-        newIndex -= 1;
-      }
-      final Spending item = spendings.removeAt(oldIndex);
-      spendings.insert(newIndex, item);
-    });
+    if (oldIndex < newIndex) newIndex -= 1;
+
+    final List<Spending> spendingsCopy = <Spending>[...spendings];
+    final Spending item = spendingsCopy.removeAt(oldIndex);
+    spendingsCopy.insert(newIndex, item);
+    setState(() => spendings = spendingsCopy);
   }
 
   handleRemoveItem(int index) {
@@ -47,8 +46,6 @@ class _SpendingListState extends State<SpendingList> {
       spentValue: spendings[index].spent.toString(),
     );
   }
-
-  void doNothing(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +65,7 @@ class _SpendingListState extends State<SpendingList> {
                 Radius.circular(8.0),
               ),
             ),
-            color: Colors.cyanAccent.withOpacity(0.2),
+            color: Colors.cyanAccent.withAlpha(20),
             child: ScaleTransition(
               scale: animation.drive(
                 Tween<double>(begin: 1, end: 1.05).chain(

@@ -55,7 +55,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Icons.bar_chart_rounded,
             color: Colors.cyanAccent,
           ),
-          label: 'Estatísticas',
+          label: 'Histórico',
         ),
         NavigationDestination(
           selectedIcon: Icon(
